@@ -19,10 +19,6 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 
 from trading.config import AuthenConfig
 
-# client_id incrementer
-IB_COUNTER = None
-IB_SLEEP = 0.01
-
 
 @dataclass
 class QuoteData:
@@ -307,6 +303,4 @@ class Trader:
         """
         is_live_data only applies to IBKR
         """
-        broker = "schwab"
-
         return SchwabTrader()
