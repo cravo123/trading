@@ -1,0 +1,104 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trading"
+version = "0.1.0"
+description = "Trading research and automation project."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary" }
+authors = [
+  { name = "Cravo" },
+]
+dependencies = [
+  "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.11.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trading"]
+
+[tool.pytest.ini_options]
+addopts = [
+  "--strict-config",
+  "--strict-markers",
+]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "A",
+  "ANN",
+  "ARG",
+  "B",
+  "C4",
+  "COM",
+  "DTZ",
+  "E",
+  "EM",
+  "ERA",
+  "F",
+  "FA",
+  "FBT",
+  "FIX",
+  "FURB",
+  "I",
+  "ISC",
+  "N",
+  "PERF",
+  "PIE",
+  "PL",
+  "PTH",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "T10",
+  "T20",
+  "TC",
+  "TD",
+  "TRY",
+  "UP",
+  "W",
+]
+ignore = [
+  "ANN101",
+  "ANN102",
+  "ANN201",
+  "COM812",
+  "ISC001",
+  "RET502",
+  "RET504",
+  "S101",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+  "ANN",
+  "ARG",
+  "PLR2004",
+  "S101",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["trading"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
